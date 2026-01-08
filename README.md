@@ -148,7 +148,7 @@ Projet éducatif / démonstration.
 
 ![Dashboard MPSA](src/assets/screenshort/screenshort.png)
 
-(![Dashboard Home](src/assets/screenshort/otherside.png))
+![Dashboard Home](src/assets/screenshort/otherside.png)
 
 
 ## 👩‍💻 Auteure
