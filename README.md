@@ -143,6 +143,12 @@ Projet éducatif / démonstration.
 
 ---
 
+
+## 📸 Aperçu du Dashboard
+
+![Dashboard Voda Daily](src/assets/screenshort/screenshort.png)
+
+
 ## 👩‍💻 Auteure
 
 **Sarah Ngoya**
