@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+
+/* ===== Floating Background Animation ===== */
+body, #root {
+  background: transparent;  /* important */
+}
+
+.floating-shape {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 1.5px solid rgba(230, 0, 0, 0.35);
+  border-radius: 50%;
+  animation: floatMove linear infinite;
+}
+
+.floating-shape:nth-child(3n) {
+  width: 6px;
+  height: 6px;
+  background: rgba(230, 0, 0, 0.6);
+  border: none;
+}
+
+.floating-shape:nth-child(4n) {
+  width: 180px;
+  height: 2px;
+  border-radius: 0;
+  background: rgba(230, 0, 0, 0.4);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Classe Tailwind custom pour animation */
+.animate-float {
+  animation: float linear infinite;
+}
+
+
+@keyframes floatMove {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-60px) translateX(30px) rotate(20deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.15;
+  }
+}

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="min-h-screen  p-6">
+    <div className="min-h-screen p-6 ">
       {/* Welcome Section */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-black mb-2">Bienvenue sur votre tableau de bord</h1>

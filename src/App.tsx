@@ -1,8 +1,9 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState } from "react"
+
 import Sidebar from "./components/sidebar"
 import Header from "./components/header"
+import FloatingBackground from "./components/floatingBackground" // renommé pour plus de clarté
 
 // Pages
 import Home from "./pages/Home"
@@ -13,31 +14,30 @@ import MPSA from "./pages/Mpsa"
 import Beneficiaires from "./pages/Beneficiaires"
 import CompteInterne from "./components/compteInterne"
 
-
-
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen)
-  }
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false)
-  }
+  // Toggle sidebar
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
+  const closeSidebar = () => setIsSidebarOpen(false)
 
   return (
     <Router>
-       <Header onToggleSidebar={toggleSidebar} />
-      <div className="min-h-screen bg-[#FFFF] dark:bg-gray-900 flex">
+      {/* 🔥 Fond animé flottant derrière tout */}
+      <FloatingBackground />
+
+      {/* Header */}
+      <Header onToggleSidebar={toggleSidebar} />
+
+      {/* Wrapper principal */}
+      <div className="min-h-screen flex relative bg-transparent">
 
         {/* Sidebar */}
         <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
-        {/* Contenu */}
-        <main className="p-6 pt-26 md:ml-100 ">
+        {/* Contenu principal */}
+        <main className="relative z-10 w-full p-6 pt-26 md:ml-100">
           <Routes>
-
             <Route path="/accueil" element={<Home />} />
             <Route path="/marketplace" element={<MarketPlace />} />
             <Route path="/moncompte" element={<MonCompte />} />
@@ -45,10 +45,9 @@ function App() {
             <Route path="/mpsa" element={<MPSA />} />
             <Route path="/beneficiaires" element={<Beneficiaires />} />
             <Route path="/compteinterne" element={<CompteInterne />} />
-
-
           </Routes>
         </main>
+
       </div>
     </Router>
   )
