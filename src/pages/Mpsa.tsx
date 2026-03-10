@@ -29,7 +29,7 @@ export default function Home() {
         </div>
 
         {/* Données mobiles */}
-        
+
         <div className=" bg-red-600 hover:bg-green-600 duration rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
           <div className="flex items-center ">
             <Link to="/paiement">
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <p className="font-semibold text-white   ml-8 mt-7">Internet Mobile</p>
         </div>
-        
+
         {/* Appels */}
         <div className=" bg-red-600 hover:bg-green-600 duration rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
           <div className="flex items-center ">
@@ -58,9 +58,9 @@ export default function Home() {
           </div>
           <p className="font-semibold text-white   ml-6 mt-2">Mes transactions</p>
         </div>
-        
+
       </div>
-    
+
     {/* Welcome Section */}
       <div className="mb-8 mt-6">
         <h1 className="text-2xl font-bold text-black mb-2">Mes préferences</h1>
@@ -74,7 +74,7 @@ export default function Home() {
         </div>
 
         {/* Données mobiles */}
-        
+
         <div className=" bg-red-600 hover:bg-green-600 duration rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
           <div className="flex items-center ">
             <Link to="/paiement">
@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           <p className="font-semibold text-white  mt-2 ml-10 mt-7">Internet Mobile</p>
         </div>
-        
+
         {/* Appels */}
         <div className=" bg-red-600 hover:bg-green-600 duration rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
           <div className="flex items-center ">
@@ -103,12 +103,12 @@ export default function Home() {
           </div>
           <p className="font-semibold text-white  mt-2 ml-8 mt-5">Mes transactions</p>
         </div>
-        
+
       </div>
-  
-      
-     
-    
+
+
+
+
       {/* Popup Modal */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-white bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">

@@ -7,11 +7,11 @@ export default function InputPhone() {
                 <button className="bg-green-400 text-white hover:border-green-400 text-black ">Compte interne</button>
              </div>
              <div>
-                
+
              </div>
 
-              
-    
+
+
     </div>
   )
 }

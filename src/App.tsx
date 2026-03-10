@@ -36,7 +36,7 @@ function App() {
         <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
         {/* Contenu principal */}
-        <main className="relative z-10 w-full p-6 pt-26 md:ml-100">
+        <main className="relative z-10 w-full p-6 pt-20 md:pt-6 md:ml-70">
           <Routes>
             <Route path="/accueil" element={<Home />} />
             <Route path="/marketplace" element={<MarketPlace />} />

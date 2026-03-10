@@ -6,7 +6,7 @@ export default function CompteInter(){
           <h2 className="text-xl text-white font-bold mb-4">Compte interne</h2>
           <p className="text-white mb-4 ">Le solde interne de mon compte.</p>
           {/* Add beneficiary information here */}
-          
+
         </div>
       </div>
     );

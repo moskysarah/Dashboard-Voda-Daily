@@ -6,7 +6,7 @@ export default function Profil() {
                 className="w-10 h-10 rounded-full object-cover"
             />
              <h3 className="text-[#FFFF] font-bold ml-2">Vodacom Daily</h3>
-    
+
     </div>
   )
 }

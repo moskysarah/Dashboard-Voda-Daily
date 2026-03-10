@@ -2,7 +2,7 @@ export default function FloatingBackground() {
   const bubbles = Array.from({ length: 20 }) // 20 bulles pour couvrir l'écran
 
   return (
-    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
       {bubbles.map((_, i) => {
         const size = 30 + Math.random() * 60 // taille 30px → 90px
 
