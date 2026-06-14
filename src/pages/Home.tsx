@@ -1,148 +1,130 @@
-import { CreditCard, Smartphone, TrendingUp, Zap, Activity, Wifi, Phone } from "lucide-react";
-import {Link} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function Home() {
-  const [animatedProgress, setAnimatedProgress] = useState(0);
-
-  useEffect(() => {
-    // Trigger animation after component mounts
-    const timer = setTimeout(() => {
-      setAnimatedProgress(50);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  // Données fictives pour l'utilisateur Vodacom Daily
+  const [userName] = useState("Jean-Marc")
+  
+  // Raccourcis d'actions rapides
+  const quickActions = [
+    { title: "Acheter Forfait", icon: "🚀", link: "/marketplace", desc: "Internet, Appels & SMS" },
+    { title: "Recharger / Envoyer", icon: "💸", link: "/paiement", desc: "Via M-Pesa sécurisé" },
+    { title: "Gérer mes Bénéficiaires", icon: "👥", link: "/beneficiaires", desc: "Proches et numéros favoris" },
+    { title: "Mon Compte Interne", icon: "🏢", link: "/compteinterne", desc: "Paramètres de l'entreprise" },
+  ]
 
   return (
-    <div className="min-h-screen p-6">
-      {/* Welcome Section */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-black mb-2">Bienvenue sur votre tableau de bord</h1>
-        <p className="text-gray-600">Gérez vos services Vodacom en toute simplicité.</p>
-      </div>
-
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Solde du compte */}
-        <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl border-t-2 border-l-2 border-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-4">
-            <Link to="/paiement" className="flex items-center">
-              <CreditCard className="w-8 h-8 text-blue-600 mr-3" />
-              <h3 className="text-lg font-semibold text-gray-800">Solde du compte</h3>
-            </Link>
-          </div>
-          <p className="text-3xl font-bold text-blue-600 mb-2">150.00 €</p>
-          <p className="text-sm text-gray-500 flex items-center gap-1">
-            <Activity size={14} className="text-green-500" />
-            Dernière mise à jour: Aujourd'hui
+    <div className="max-w-6xl mx-auto space-y-8 pb-12 mt-30">
+      
+      {/* 1. MESSAGE DE BIENVENUE PREMIUM */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">
+            Bonjour, <span className="text-red-600">{userName}</span> 
+          </h1>
+          <p className="text-slate-500 font-medium mt-1">
+            Ravi de vous revoir sur votre espace <span className="font-bold text-red-500">Vodacom Daily</span>. Voici l'état de vos consommations aujourd'hui.
           </p>
         </div>
-
-        {/* Données mobiles */}
-        <div className="bg-white rounded-xl border-t-2 border-l-2 border-green-600 shadow-md p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-4">
-            <Smartphone className="w-8 h-8 text-green-600 mr-3" />
-            <h3 className="text-lg font-semibold text-gray-800">Données mobiles</h3>
-          </div>
-          <p className="text-3xl font-bold text-green-600 mb-1">2.5 GB</p>
-          <p className="text-sm text-gray-500 mb-3">Restant sur 5 GB</p>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full transition-all duration-1000 ease-out animate-progress"
-              style={{ width: `${animatedProgress}%` }}
-            ></div>
-          </div>
-          <p className="text-xs text-green-600 mt-1 font-medium">50% utilisé</p>
-        </div>
-
-        {/* Appels */}
-        <div className="bg-white rounded-xl border-t-2 border-l-2 border-purple-600 shadow-md p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-4">
-            <Phone className="w-8 h-8 text-purple-600 mr-3" />
-            <h3 className="text-lg font-semibold text-gray-800">Appels</h3>
-          </div>
-          <p className="text-3xl font-bold text-purple-600 mb-1">120 min</p>
-          <p className="text-sm text-gray-500 mb-3">Ce mois-ci</p>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
-              style={{ width: '40%' }}
-            ></div>
-          </div>
-          <p className="text-xs text-purple-600 mt-1 font-medium">40% utilisé</p>
-        </div>
-
-        {/* SMS */}
-        <div className="bg-white rounded-xl border-t-2 border-l-2 border-orange-500 shadow-md p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center mb-4">
-            <Wifi className="w-8 h-8 text-orange-500 mr-3" />
-            <h3 className="text-lg font-semibold text-gray-800">SMS</h3>
-          </div>
-          <p className="text-3xl font-bold text-orange-500 mb-1">85 SMS</p>
-          <p className="text-sm text-gray-500 mb-3">Restant sur 100 SMS</p>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-orange-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
-              style={{ width: '15%' }}
-            ></div>
-          </div>
-          <p className="text-xs text-orange-500 mt-1 font-medium">15% utilisé</p>
+        <div className="bg-slate-50 border border-slate-100 px-5 py-3 rounded-2xl shadow-sm text-center md:text-right w-full md:w-auto">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Statut du Réseau</p>
+          <p className="text-sm font-bold text-emerald-600 flex items-center justify-center md:justify-end gap-1.5 mt-0.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> Connecté en 4G/5G
+          </p>
         </div>
       </div>
 
-      {/* Actions rapides */}
-      <div className="mt-8 bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
-        <div className="flex items-center mb-4">
-          <Zap className="w-8 h-8 text-red-600 mr-3" />
-          <h3 className="text-xl font-semibold text-gray-800">Actions rapides</h3>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <button className="bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium">
-            <CreditCard size={18} />
-            Recharger
-          </button>
-          <Link to="/marketplace" className="block">
-            <button className="w-full bg-gray-200 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium">
-              Voir offres
-            </button>
+      {/* 2. VUE D'ENSEMBLE DES SOLDES & SUIVI DE CONSOMMATION */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Carte Solde Principal M-Pesa */}
+        <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col justify-between min-h-[160px] transition-all hover:shadow-xl">
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Solde M-Pesa</p>
+              <h3 className="text-3xl font-black text-slate-800 mt-2">45,50 $</h3>
+            </div>
+            <span className="p-3 bg-emerald-50 rounded-2xl text-emerald-600 text-xl font-bold">M</span>
+          </div>
+          <Link to="/paiement" className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 mt-4 group">
+            Recharger le compte <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
-          <button className="bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium">
-            <Smartphone size={18} />
-            Mon forfait
-          </button>
+        </div>
+
+        {/* Carte Data Internet (Avec barre de progression) */}
+        <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col justify-between min-h-[160px] transition-all hover:shadow-xl">
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Internet Daily</p>
+              <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md">Restant</span>
+            </div>
+            <h3 className="text-3xl font-black text-slate-800">12,4 GB</h3>
+            <p className="text-xs text-slate-400 font-medium mt-0.5">sur un total de 15 GB</p>
+          </div>
+          {/* Barre de progression de consommation */}
+          <div className="mt-4">
+            <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="bg-red-600 h-full rounded-full" style={{ width: "82%" }}></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Carte Minutes Appels */}
+        <div className="bg-white p-6 rounded-3xl shadow-lg border border-slate-100 flex flex-col justify-between min-h-[160px] transition-all hover:shadow-xl">
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Minutes Appels</p>
+              <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md">Actif</span>
+            </div>
+            <h3 className="text-3xl font-black text-slate-800">120 Min</h3>
+            <p className="text-xs text-slate-400 font-medium mt-0.5">Vers tous les réseaux</p>
+          </div>
+          <p className="text-[11px] font-semibold text-slate-400 mt-4">Expire le : Demain à 23h59</p>
+        </div>
+
+      </div>
+
+      {/* 3. SECTION ACTIONS RAPIDES */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-extrabold text-slate-800 pl-2">Actions rapides</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {quickActions.map((action, index) => (
+            <Link 
+              key={index} 
+              to={action.link}
+              className="bg-white p-5 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex items-start gap-4 transform hover:translate-y-[-2px]"
+            >
+              <div className="text-2xl p-2 bg-slate-50 rounded-xl border border-slate-100/60">
+                {action.icon}
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-800 text-sm">{action.title}</h4>
+                <p className="text-xs text-slate-400 font-medium mt-1 leading-snug">{action.desc}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 
-      {/* Additional Section - Dernières activités */}
-      <div className="mt-8 bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-blue-600" />
-          Dernières activités
-        </h2>
-        <div className="space-y-3">
-          <div className="flex items-center justify-between py-3 border-b border-gray-100 hover:bg-green-50 px-3 rounded-lg transition-colors cursor-pointer">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse-soft"></div>
-              <span className="text-gray-700 font-medium">Recharge de 20€ effectuée</span>
-            </div>
-            <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">Il y a 2h</span>
+      {/* 4. MESSAGE ALERTE INFO/PROMO DAILY */}
+      <div className="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 flex flex-col sm:flex-row items-center gap-5 justify-between">
+        <div className="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+          <div className="w-12 h-12 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-xl shadow-inner">
+            🎁
           </div>
-          <div className="flex items-center justify-between py-3 border-b border-gray-100 hover:bg-blue-50 px-3 rounded-lg transition-colors cursor-pointer">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-              <span className="text-gray-700 font-medium">Forfait 5GB activé</span>
-            </div>
-            <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">Hier</span>
-          </div>
-          <div className="flex items-center justify-between py-3 hover:bg-purple-50 px-3 rounded-lg transition-colors cursor-pointer">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-              <span className="text-gray-700 font-medium">Paiement facture</span>
-            </div>
-            <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">3 jours</span>
+          <div>
+            <h4 className="font-bold text-slate-800">Bonus M-Pesa du Week-end !</h4>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">Recevez 100% de bonus internet supplémentaire pour chaque forfait acheté le samedi et dimanche via M-Pesa.</p>
           </div>
         </div>
+        <Link 
+          to="/marketplace" 
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow-md shadow-red-600/10 transition-colors whitespace-nowrap"
+        >
+          En profiter maintenant
+        </Link>
       </div>
+
     </div>
-  );
+  )
 }
